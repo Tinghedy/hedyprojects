@@ -139,7 +139,7 @@ export default function InteractivePortrait() {
     const blob = new Blob(renderer)
 
     const textureLoader = new THREE.TextureLoader()
-    const baseTexture = textureLoader.load("/images/hero-off.png", (texture) => {
+    const baseTexture = textureLoader.load("/images/hero-off2.png", (texture) => {
       const img = texture.image
       const imgAspect = img.width / img.height
       const containerAspect = width / height
@@ -157,7 +157,7 @@ export default function InteractivePortrait() {
       helmetImage.geometry = new THREE.PlaneGeometry(planeWidth, planeHeight)
     })
 
-    const helmetTexture = textureLoader.load("/images/hero-on.png")
+    const helmetTexture = textureLoader.load("/images/hero-on4.png")
 
     baseTexture.colorSpace = THREE.SRGBColorSpace
     helmetTexture.colorSpace = THREE.SRGBColorSpace
@@ -219,16 +219,16 @@ export default function InteractivePortrait() {
         vec3 colorLine = vec3(0.8);
 
         // 2. Coordenada base da textura (controla o "zoom")
-        vec2 uv = vUv * 3.5;
+        vec2 uv = vUv * 7.0;
 
         // 3. Cria um "campo de distorção" que muda com o tempo
         // Este é o nosso "líquido invisível" que vai mover a textura
         vec2 distortionField = vUv * 2.0;
-        float distortion = fbm(distortionField + time * 0.2); // O campo de distorção se move lentamente
+        float distortion = fbm(distortionField + time * 0.8); // O campo de distorção se move lentamente
 
         // 4. Aplica a distorção (warp) às coordenadas da textura principal
         // Usamos o 'distortion' para empurrar as coordenadas 'uv'
-        float distortionStrength = 0.7; // <-- CONTROLE A INTENSIDADE AQUI
+        float distortionStrength = 1.5; // <-- CONTROLE A INTENSIDADE AQUI
         vec2 warpedUv = uv + (distortion - 0.5) * distortionStrength;
         
         // 5. Gera o valor final do ruído a partir das coordenadas distorcidas
@@ -237,7 +237,7 @@ export default function InteractivePortrait() {
         // O resto da lógica para desenhar as formas e linhas permanece o mesmo
         float softShapeMix = smoothstep(0.1, 0.9, sin(n * 3.0));
         vec3 baseColor = mix(colorBg, colorSoftShape, softShapeMix);
-        float linePattern = fract(n * 15.0);
+        float linePattern = fract(n * 35.0);
         float lineMix = 1.0 - smoothstep(0.49, 0.51, linePattern);
         vec3 finalColor = mix(baseColor, colorLine, lineMix);
 
