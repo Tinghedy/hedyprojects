@@ -79,9 +79,8 @@ export default function Header() {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "backdrop-blur-md" : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "backdrop-blur-md" : "bg-transparent"
+          }`}
       >
         <div className="mx-auto px-6 md:px-12 flex items-center justify-between h-16">
           <motion.div
@@ -91,11 +90,10 @@ export default function Header() {
             className="flex flex-col justify-center items-start mix-blend-difference"
           >
             <h1
-              className={`font-brier text-4xl leading-none mt-1 tracking-tight font-bold transition-colors duration-300 ${
-                logoColor === "white" ? "text-white" : "text-lorenzo-dark"
-              }`}
+              className={`font-brier text-4xl leading-none mt-1 tracking-tight font-bold transition-colors duration-300 ${logoColor === "white" ? "text-white" : "text-lorenzo-dark"
+                }`}
             >
-              LORENZO
+              HEDY
             </h1>
           </motion.div>
 
